@@ -11,11 +11,12 @@ class SongDataApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: "Song Data App",
-        home: ChangeNotifierProvider<SearchResultProvider>(
-          create: (_) => SearchResultProvider(),
-          child: SearchScreen(),
-          //routes: {SongDataScreen.route: (context) => TheBeastLyricsHomePage()},
-        ));
+      title: "Song Data App",
+      home: ChangeNotifierProvider<SearchResultProvider>(
+        create: (_) => SearchResultProvider(),
+        child: SearchScreen(),
+        //routes: {SongDataScreen.route: (context) => TheBeastLyricsHomePage()},
+      ),
+    );
   }
 }

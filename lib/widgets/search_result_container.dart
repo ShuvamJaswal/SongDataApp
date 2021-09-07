@@ -12,7 +12,7 @@ class _SearchResultContainerState extends State<SearchResultContainer> {
   Widget build(BuildContext context) {
     final searchResults = Provider.of<SearchResultProvider>(context);
 
-    return SingleChildScrollView(
+    return Expanded(
       child: Container(
           padding: const EdgeInsets.all(16.0),
           child: searchResults.isFetching
