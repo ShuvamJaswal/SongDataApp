@@ -16,7 +16,7 @@ class _SearchResultContainerState extends State<SearchResultContainer> {
       child: Container(
           padding: const EdgeInsets.all(16.0),
           child: searchResults.isFetching
-              ? CircularProgressIndicator()
+              ? Center(child: CircularProgressIndicator())
               : searchResults.getResponseJson().length == 0
                   ? Text("Please Enter Something To Search")
                   : ListView.builder(
