@@ -42,14 +42,13 @@ class SearchFieldEdit extends StatelessWidget {
       children: [
         Expanded(
           child: TextField(
-            //on 1stTap it will fetch the result
-            onTap: () {
-              searchResult.fetchData('${domainUrl}search/song?q=*');
-            },
             onChanged: (String fieldText) => fieldText.isEmpty
-                ? searchResult.fetchData('${domainUrl}search/song?q=*')
-                : searchResult
-                    .fetchData('${domainUrl}search/song?q=${fieldText.trim()}'),
+                ? searchResult.changeShowResultContainer(false)
+                : {
+                    searchResult.fetchData(
+                        '${domainUrl}search/song?q=${fieldText.trim()}'),
+                    searchResult.changeShowResultContainer(true)
+                  },
             onSubmitted: (String fieldText) => searchResult.fetchData(
                 'https://genius.com/api/search/song?q=${fieldText.trim()}'),
             controller: searchFieldInputController,

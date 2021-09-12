@@ -13,16 +13,17 @@ class _SearchResultContainerState extends State<SearchResultContainer> {
     final searchResults = Provider.of<SearchResultProvider>(context);
 
     return Expanded(
-      child: Container(
-          padding: const EdgeInsets.all(16.0),
-          child: searchResults.isFetching
-              ? Center(child: CircularProgressIndicator())
-              : searchResults.getResponseJson().length == 0
-                  ? Text("Please Enter Something To Search")
+        child: Container(
+      padding: const EdgeInsets.all(16.0),
+      child: searchResults.isFetching
+          ? Center(child: CircularProgressIndicator())
+          : searchResults.shouldShowResultContainer
+              ? searchResults.getResponseJson().length == 0
+                  ? Text("Nothing Found")
                   : ListView.builder(
                       primary: false,
                       shrinkWrap: true,
-                      itemCount: 5, //searchResults.getResponseJson().length,
+                      itemCount: searchResults.getResponseJson().length,
                       itemBuilder: (context, index) {
                         return ListTile(
                             leading: CircleAvatar(
@@ -37,8 +38,8 @@ class _SearchResultContainerState extends State<SearchResultContainer> {
                             ));
                       },
                     )
-          // : Text("Press Button above to fetch data"),
-          ),
-    );
+              // : Text("Press Button above to fetch data"),
+              : Text("Please Enter Something To Search"),
+    ));
   }
 }
