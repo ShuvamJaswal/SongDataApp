@@ -44,10 +44,10 @@ class SearchFieldEdit extends StatelessWidget {
           child: TextField(
             //on 1stTap it will fetch the result
             onTap: () {
-              searchResult.fetchData('${domainUrl}search/song?q=*');
+              // searchResult.fetchData('${domainUrl}search/song?q=*');
             },
             onChanged: (String fieldText) => fieldText.isEmpty
-                ? searchResult.fetchData('${domainUrl}search/song?q=*')
+                ? searchResult.fetchData('${domainUrl}search/song/')
                 : searchResult
                     .fetchData('${domainUrl}search/song?q=${fieldText.trim()}'),
             onSubmitted: (String fieldText) => searchResult.fetchData(
