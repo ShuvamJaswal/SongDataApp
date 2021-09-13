@@ -50,6 +50,7 @@ class SearchFieldEdit extends StatelessWidget {
                 ? searchResult.fetchData('${domainUrl}search/song/')
                 : searchResult
                     .fetchData('${domainUrl}search/song?q=${fieldText.trim()}'),
+
             onSubmitted: (String fieldText) => searchResult.fetchData(
                 'https://genius.com/api/search/song?q=${fieldText.trim()}'),
             controller: searchFieldInputController,
